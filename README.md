@@ -25,7 +25,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 ```
 
 ## Screenshot:
-[screenshot](../img/Screenshot%202024-03-02%20173147.png)
+[screenshot](./img/Screenshot%202024-03-02%20173147.png)
 
 ## What I Learned:
 1. How to work with unstructured data with MongoDB.
