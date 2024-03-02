@@ -2,7 +2,7 @@
 Social Network API using MongoDB
 
 ## Description:
-A CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts. Once completed it is then deployed to Heroku. The application uses Handlebars.js as the template language, Sequelize as the ORM, express-session npm package authentication and follos the MVM paradigm architectural structure.
+A social network web application where a user can share their thoughts, can add friends to a friends list, and react to friend's thoughts.
 
 ## User Story:
 ```md
@@ -25,14 +25,13 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 ```
 
 ## Screenshot:
-[screenshot](./public/img/Screenshot%202024-02-04%20112149.png)
+[screenshot](../img/Screenshot%202024-03-02%20173147.png)
 
 ## What I Learned:
-1. 
-2. 
+1. How to work with unstructured data with MongoDB.
 
 ## Repository Link:
-[Repository Link 'Click Here'.](https://github.com/SPCSanti1990/Model-View-Controller)
+[Repository Link 'Click Here'.](https://github.com/SPCSanti1990/Social-Network-API)
 
 ## Walkthrough Video URL
-[Deployed URL 'Click Here'.](https://technology-blog-mvc14-01d19b078382.herokuapp.com/)
+[Deployed URL 'Click Here'.](https://drive.google.com/file/d/1OWF9Khi12OxXTWiQUHBZnY7le-VJQ2tq/view)
