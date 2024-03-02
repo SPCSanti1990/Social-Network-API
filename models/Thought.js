@@ -1,72 +1,77 @@
-const { Schema, model, Tyoes } = require("mongoose");
-const date = require("../utils/formatDate");
+const { Schema, model, Types } = require("mongoose");
+const dateFormat = require("../utils/formatDate");
 
 const ReactionSchema = new Schema(
-    {
-        reactionId: {
-            type: Schema.Types.ObjectId,
-            default: () => new Types.ObjectId()
-        },
-         
-        reactionBody: {
-            type: String,
-            required: true,
-            maxlength: 280
-        },
-
-        username: {
-            type: String,
-            required: true
-        },
-
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            get: (timestamp) => date(timestamp)
-        }
+  {
+    reactionId: {
+      // Mongoose's ObjectId data type
+      type: Schema.Types.ObjectId,
+      // Default value is set to a new ObjectId
+      default: () => new Types.ObjectId(),
     },
-    {
-        toJSON: {
-            getters: true
-        },
-        id: false
-    }
+
+    reactionBody: {
+      type: String,
+      required: true,
+      maxlength: 280,
+    },
+
+    username: {
+      type: String,
+      required: true,
+    },
+
+    createdAt: {
+      type: Date,
+      // Set default value to the current timestamp
+      default: Date.now,
+      // Use a getter method to format the timestamp on query
+      get: (timestamp) => dateFormat(timestamp),
+    },
+  },
+  {
+    toJSON: {
+      getters: true,
+    },
+    id: false,
+  }
 );
 
 const ThoughtSchema = new Schema(
-    {
-        thoughtText: {
-            type: String,
-            required: "Though is required",
-            minlength: 1,
-            maxlength: 280
-        },
-
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            get: (timestamp) => date(timestamp)
-        },
-
-        username: {
-            type: String,
-            required: true
-        },
-
-        reaction: [ReactionSchema]
+  {
+    thoughtText: {
+      type: String,
+      required: "Thought is Required",
+      minlength: 1,
+      maxlength: 280,
     },
 
-    {
-        toJSON: {
-            virtuals:true,
-            getters: true
-        },
-        id: false
-    }
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      // Use a getter method to format the timestamp on query
+      get: (timestamp) => dateFormat(timestamp),
+    },
+
+    username: {
+      type: String,
+      required: true,
+    },
+
+    // array of nested documents created with the reactionSchema
+    reactions: [ReactionSchema],
+  },
+  {
+    toJSON: {
+      virtuals: true,
+      getters: true,
+    },
+    id: false,
+  }
 );
 
 ThoughtSchema.virtual("reactionCount").get(function () {
-    return this.reaction.length;
+  return this.reactions.length;
 });
 
 const Thought = model("Thought", ThoughtSchema);
